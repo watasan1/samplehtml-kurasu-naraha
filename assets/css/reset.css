@@ -1,0 +1,122 @@
+/**
+ * uaplus-reset.css
+ * WordPress friendly UA+ Reset (reviewed)
+ */
+
+/* -----------------------------
+ * Global box model
+ * ----------------------------- */
+:where(*, *::before, *::after) {
+  box-sizing: border-box;
+}
+
+/* -----------------------------
+ * Accessibility (non-destructive)
+ * ----------------------------- */
+:where(:focus-visible) {
+  outline-offset: 3px;
+}
+
+/* -----------------------------
+ * Root / html
+ * ----------------------------- */
+:where(html) {
+  line-height: 1.7;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scrollbar-gutter: stable;
+}
+
+/* -----------------------------
+ * Headings (UA respectful)
+ * ----------------------------- */
+:where(h1) {
+  font-size: 2em;
+  margin-block: 0.67em;
+}
+
+/* -----------------------------
+ * Text semantics
+ * ----------------------------- */
+:where(abbr[title]) {
+  cursor: help;
+  text-decoration: underline dotted;
+}
+
+/* -----------------------------
+ * High contrast mode
+ * ----------------------------- */
+@media (forced-colors: active) {
+  mark {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+
+/* -----------------------------
+ * Media elements
+ * ----------------------------- */
+/* iframe は高さ計算を壊しやすいため除外 */
+:where(img, svg, video, audio) {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* -----------------------------
+ * Forms (WordPress safe)
+ * ----------------------------- */
+:where(button, input, select, textarea) {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+:where(textarea:not([rows])) {
+  min-block-size: 6em;
+}
+
+/* Progressive enhancement
+ * :has() 未対応環境では無視される */
+:where(label):has(+ :where(textarea, input, select)) {
+  display: block;
+}
+
+/* Avoid breaking WP plugins */
+:where([type="search"]) {
+  -webkit-appearance: auto;
+}
+
+/* -----------------------------
+ * Tables (minimal reset only)
+ * ----------------------------- */
+:where(table) {
+  border-collapse: collapse;
+}
+
+:where(th, td) {
+  padding: 0.25em 0.5em;
+}
+
+/* -----------------------------
+ * Hidden attribute
+ * ----------------------------- */
+:where([hidden]) {
+  display: none;
+}
+
+/* -----------------------------
+ * Body base
+ * ----------------------------- */
+body {
+  font-family:
+    "M PLUS 1p",
+    "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "Noto Sans JP",
+    sans-serif;
+  overflow-wrap: break-word;
+  word-break: normal;
+  margin: 0;
+}
+
